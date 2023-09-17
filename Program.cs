@@ -13,7 +13,7 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Minimal API!");
 
-app.MapPost("/employees/", async (Employee e, OfficeDb db) =>
+app.MapPost("/employees", async (Employee e, OfficeDb db) =>
 {
     db.Employees.Add(e);
     await db.SaveChangesAsync();
@@ -21,18 +21,38 @@ app.MapPost("/employees/", async (Employee e, OfficeDb db) =>
     return Results.Created($"/employee/{e.Id}", e);
 });
 
-app.MapGet("/employees/{id:int}", async (int id, OfficeDb db) =>
+app.MapGet("/employees/{id:int}", async (int id, OfficeDb db) => await db.Employees.FindAsync(id)
+    is Employee e
+    ? Results.Ok(e)
+    : Results.NoContent());
+
+app.MapGet("/employees", async (OfficeDb db) => await db.Employees.ToListAsync());
+
+app.MapPut("/employees", async ( Employee e, OfficeDb db) =>
 {
-    return await db.Employees.FindAsync(id)
-        is Employee e
-        ? Results.Ok(e)
-        : Results.NotFound();
+    var employee = await db.Employees.FindAsync(e.Id);
+
+    if (employee is null) return Results.NoContent();
+
+    employee.FirstName = e.FirstName;
+    employee.LastName = e.LastName;
+    employee.Branch = e.Branch;
+    employee.Age = e.Age;
+
+    await db.SaveChangesAsync();
+
+    return Results.Ok(employee);
 });
 
-app.MapGet("/employees", async (OfficeDb db) =>
+app.MapDelete("/employees/{id:int}", async (int id, OfficeDb db) =>
 {
-    return await db.Employees.ToListAsync();
-    ;
+    var employee = await db.Employees.FindAsync(id);
+    if (employee is null) return Results.NoContent();
+    
+    db.Employees.Remove(employee);
+    await db.SaveChangesAsync();
+
+    return Results.Ok("Record Deleted");
 });
 
 app.Run();
