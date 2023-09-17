@@ -36,3 +36,9 @@
 /home/mamg/Documents/projects/personal/shardapp/MinimalApi/bin/Debug/net7.0/System.CodeDom.dll
 /home/mamg/Documents/projects/personal/shardapp/MinimalApi/obj/Debug/net7.0/MinimalApi.csproj.AssemblyReference.cache
 /home/mamg/Documents/projects/personal/shardapp/MinimalApi/obj/Debug/net7.0/MinimalApi.csproj.CopyComplete
+/home/mamg/Documents/projects/personal/shardapp/MinimalApi/bin/Debug/net7.0/Microsoft.AspNetCore.OpenApi.dll
+/home/mamg/Documents/projects/personal/shardapp/MinimalApi/bin/Debug/net7.0/Microsoft.OpenApi.dll
+/home/mamg/Documents/projects/personal/shardapp/MinimalApi/obj/Debug/net7.0/MinimalApi.MvcApplicationPartsAssemblyInfo.cs
+/home/mamg/Documents/projects/personal/shardapp/MinimalApi/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/mamg/Documents/projects/personal/shardapp/MinimalApi/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/mamg/Documents/projects/personal/shardapp/MinimalApi/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll

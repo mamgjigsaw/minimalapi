@@ -12,7 +12,7 @@ namespace MinimalApi.Migrations
 {
     [DbContext(typeof(OfficeDb))]
     [Migration("20230917185428_firstmigration")]
-    partial class firstmigration
+    partial class firstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
