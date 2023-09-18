@@ -62,4 +62,20 @@ app.MapDelete("/employees/{id:int}", async (int id, OfficeDb db) =>
     return Results.Ok("Record Deleted");
 });
 
+app.MapPost("/companies", async (Company e, OfficeDb db) =>
+{
+    e.createdDate = DateTime.UtcNow;
+    e.lastModifiedDate = DateTime.UtcNow;
+    e.lastModifiedBy = e.createdBy;
+    db.Companies.Add(e);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/companies/{e.Id}", e);
+});
+
+app.MapGet("/companies/{id:int}", async (int id, OfficeDb db) => await db.Companies.FindAsync(id)
+    is Company e
+    ? Results.Ok(e)
+    : Results.NoContent());
+
 app.Run();

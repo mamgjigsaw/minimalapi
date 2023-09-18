@@ -10,4 +10,5 @@ public class OfficeDb: DbContext
         
     }
     public DbSet<Employee> Employees => Set<Employee>();
+    public DbSet<Company> Companies => Set<Company>();
 }
