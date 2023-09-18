@@ -1,2 +1,6 @@
 
-dotnet ef migrations add firstmigration --project MinimalApi.csproj
+create migrations
+dotnet ef migrations add change_id_to_guid --project MinimalApi.csproj
+
+apply migrations
+dotnet ef database update change_id_to_guid --project MinimalApi.csproj
