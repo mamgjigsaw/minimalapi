@@ -64,6 +64,7 @@ app.MapDelete("/employees/{id:int}", async (int id, OfficeDb db) =>
 
 app.MapPost("/companies", async (Company e, OfficeDb db) =>
 {
+    e.Id = Guid.NewGuid();
     e.createdDate = DateTime.UtcNow;
     e.lastModifiedDate = DateTime.UtcNow;
     e.lastModifiedBy = e.createdBy;
